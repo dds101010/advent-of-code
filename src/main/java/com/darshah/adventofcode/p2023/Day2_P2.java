@@ -29,12 +29,10 @@ public class Day2_P2 {
                             var num = Integer.parseInt(temp[0].trim());
                             var color = temp[1].trim();
 
-                            if (color.equals("red")) {
-                                red = (num > red) ? num : red;
-                            } else if (color.equals("green")) {
-                                green = (num > green) ? num : green;
-                            } else if (color.equals("blue")) {
-                                blue = (num > blue) ? num : blue;
+                            switch (color) {
+                                case "red" -> red = Math.max(num, red);
+                                case "green" -> green = Math.max(num, green);
+                                case "blue" -> blue = Math.max(num, blue);
                             }
                         }
                     }
@@ -42,8 +40,7 @@ public class Day2_P2 {
                     System.out.printf("red: %d, green: %d, blue: %d%n", red, green, blue);
 
                     return red * green * blue;
-                })
-                .reduce(0, (a, b) -> a + b);
+                }).reduce(0, Integer::sum);
 
             System.out.println("Result: ");
             System.out.println(sum);
