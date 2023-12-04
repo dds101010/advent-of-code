@@ -11,3 +11,6 @@
 - Day 3
   - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day3_P1.java)
   - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day3_P2.java)
+- Day 4
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day4_P1.java)
+  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day4_P2.java)
