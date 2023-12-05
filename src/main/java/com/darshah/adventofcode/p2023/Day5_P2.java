@@ -10,6 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.TreeSet;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
 import java.util.stream.Stream;
 
 public class Day5_P2 {
@@ -40,20 +42,37 @@ public class Day5_P2 {
 
             Objects.requireNonNull(seeds, "seeds cannot be null. Something wrong with parsing!");
 
+            var executor = Executors.newFixedThreadPool(8);
+            var futures = new LinkedList<CompletableFuture<Long>>();
+
             for (int i = 0; i < seeds.size(); i += 2) {
                 var from = seeds.get(i);
                 var to = from + seeds.get(i + 1);
-                System.out.printf("Computing from %d to %d%n", from, to);
-                for (long seed = from; seed < to; seed++) {
-                    // var location = traverseFromSrcToDest(seed, input, memo);
-                    var location = Day5_P1.traverseFromSrcToDest(seed, input);
-                    ans = Math.min(ans, location);
-                }
+                futures.add(CompletableFuture.supplyAsync(() -> findMinInRange(from, to, input), executor));
             }
+
+            ans = futures.stream()
+                .map(CompletableFuture::join)
+                .min(Long::compareTo)
+                .orElseThrow();
 
             System.out.println("Result: ");
             System.out.println(ans);
+
+            executor.shutdown();
         }
+    }
+
+    public static long findMinInRange(long from, long to, LinkedList<TreeSet<Range>> input) {
+        var ans = Long.MAX_VALUE;
+        System.out.printf("Computing from %d to %d%n", from, to);
+        for (long seed = from; seed < to; seed++) {
+            // var location = traverseFromSrcToDest(seed, input, memo);
+            var location = Day5_P1.traverseFromSrcToDest(seed, input);
+            ans = Math.min(ans, location);
+        }
+        System.out.printf("> Finished computing from %d to %d%n", from, to);
+        return ans;
     }
 
     // This does not work. goes OOM :')

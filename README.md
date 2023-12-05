@@ -16,4 +16,4 @@
   - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day4_P2.java)
 - Day 5
   - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day5_P1.java)
-  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day5_P2.java)
+  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day5_P2.java) (*3 mins with multi-threading*)
