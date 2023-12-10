@@ -3,9 +3,6 @@ package com.darshah.adventofcode.p2023;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class Day10_P2 {
@@ -139,72 +136,6 @@ public class Day10_P2 {
             return '╝';
         } else {
             return 'X';
-        }
-    }
-
-    public static void queueIfNotVisited(Location location, LinkedList<Location> queue, HashSet<Location> visited) {
-        if (location != null && !visited.contains(location)) {
-            queue.offerLast(location);
-        }
-    }
-
-    public static List<Location> getFirstIteration(List<String> input, Location start) {
-        var firstIteration = new LinkedList<Location>();
-
-        var east = getCharAt(input, start.x + 1, start.y);
-        if (east == '-' || east == '7' || east == 'J') {
-            firstIteration.offer(new Location(start.x + 1, start.y));
-        }
-
-        var south = getCharAt(input, start.x, start.y + 1);
-        if (south == 'J' || south == '|' || south == 'L') {
-            firstIteration.offer(new Location(start.x, start.y + 1));
-        }
-
-        var west = getCharAt(input, start.x - 1, start.y);
-        if (west == '-' || west == 'L' || west == 'F') {
-            firstIteration.offer(new Location(start.x - 1, start.y));
-        }
-
-        var north = getCharAt(input, start.x, start.y - 1);
-        if (north == '|' || north == 'F' || north == '7') {
-            firstIteration.offer(new Location(start.x, start.y - 1));
-        }
-
-        return firstIteration;
-    }
-
-
-    public static char getCharAt(List<String> input, int x, int y) {
-        if (x < 0 || y < 0) {
-            return '.';
-        } else if (y >= input.size()) {
-            return '.';
-        } else if (x >= input.get(y).length()) {
-            return '.';
-        } else {
-            return input.get(y).charAt(x);
-        }
-    }
-
-    public static Location getStartingLocation(List<String> lines) {
-
-        for (int i = 0; i < lines.size(); i++) {
-            var j = lines.get(i).indexOf("S");
-            if (j != -1) {
-                return new Location(j, i);
-            }
-        }
-        throw new RuntimeException("Could not find location of S");
-    }
-
-    public static record Location(int x, int y) {
-
-        public static Location getInstance(int x, int y) {
-            if (x < 0 || y < 0) {
-                return null;
-            }
-            return new Location(x, y);
         }
     }
 }
