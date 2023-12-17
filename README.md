@@ -38,3 +38,18 @@
 - Day 12
   - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day12_P1.java)
   - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day12_P2.java)
+- Day 13
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day13_P1.java)
+  - _need to push code from another device_
+- Day 14
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day14_P1.java)
+  - _did not complete_
+- Day 15
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day15_P1.java)
+  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day15_P2.java)
+- Day 16
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day16_P1.java)
+  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day16_P2.java)
+- Day 17
+  - [Problem 1](src/main/java/com/darshah/adventofcode/p2023/Day17_P1.java)
+  - [Problem 2](src/main/java/com/darshah/adventofcode/p2023/Day17_P2.java)
